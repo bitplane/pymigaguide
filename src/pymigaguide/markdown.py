@@ -4,7 +4,7 @@ import re
 from dataclasses import dataclass
 from typing import Dict, List, Optional
 
-from models import (
+from .model import (
     GuideDocument,
     GuideNode,
     Inline,

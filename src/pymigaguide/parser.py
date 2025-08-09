@@ -1,13 +1,14 @@
 from __future__ import annotations
 
 import re
+from .regex import NODE_START_RE, NODE_END_RE, CMD_LINE_RE, INLINE_RE, QUOTED_RE, FILE_NODE_SPLIT, ESCAPED_AT_RE, ESCAPED_BS_RE
 from pathlib import Path
 from typing import Optional, Tuple, List
 
 # If you want encoding detection, install chardet and uncomment:
 # import chardet
 
-from models import (
+from .model import (
     GuideDocument,
     GuideMetadata,
     GuideNode,
@@ -26,23 +27,8 @@ from models import (
 )
 
 
-NODE_START_RE = re.compile(r'^@NODE\s+(\S+)(?:\s+"([^"]*)")?\s*$', re.IGNORECASE)
-NODE_END_RE = re.compile(r"^@ENDNODE(?:\s+\S+)?\s*$", re.IGNORECASE)
 
-# Commands that must start at column 0 (global or node-level)
-CMD_LINE_RE = re.compile(r"^\s*@([A-Z]+)\b(.*)$", re.IGNORECASE)
 
-# Inline @{ ... } occurrences
-INLINE_RE = re.compile(r"@{([^}]*)}")
-
-# Quoted string (for inline commands like @"label")
-QUOTED_RE = re.compile(r'"((?:[^"\\]|\\.)*)"')
-
-# Split file/node as "file/node"
-FILE_NODE_SPLIT = re.compile(r"^(.*?)/(.*)$")
-
-ESCAPED_AT_RE = re.compile(r"\\@")  # \@ => literal @
-ESCAPED_BS_RE = re.compile(r"\\\\")  # \\ => literal \
 
 
 def detect_encoding_and_read(path: Path) -> str:
@@ -239,8 +225,8 @@ class AmigaGuideParser:
 
     def _parse_node_content(self, text: str) -> List[Inline]:
         # Replace escaped sequences first (\@ -> @, \\ -> \)
-        text = ESCAPED_BS_RE.sub("\\", text)
-        text = ESCAPED_AT_RE.sub("@", text)
+        text = text.replace("\\\\", "\\")
+        text = text.replace("\\@", "@")
 
         out: List[Inline] = []
         pos = 0
@@ -442,12 +428,12 @@ class AmigaGuideParser:
     def _strip_quotes(s: str) -> str:
         s = s.strip()
         if len(s) >= 2 and s[0] == '"' and s[-1] == '"':
-            return s[1:-1].replace('\\"', '"')
+            return s[1:-1].replace('\"', '"')
         return s
 
     @staticmethod
     def _unescape_quotes(s: str) -> str:
-        return s.replace('\\"', '"')
+        return s.replace('\"', '"')
 
     @staticmethod
     def _unquote(s: str) -> str:
@@ -482,3 +468,4 @@ class AmigaGuideParser:
         # At global/node directive level we usually just want the node part or full
         # string as-is for later resolution.
         return s
+ s

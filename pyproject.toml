@@ -10,8 +10,13 @@ requires-python = ">=3.10"
 
 dependencies = [
     "pydantic",
-    "chardet"
+    "chardet",
+    "textual"
 ]
+
+[project.scripts]
+pymigaguide = "pymigaguide.cli:main"
+pymigaguide-view = "pymigaguide.app:main"
 
 [project.optional-dependencies]
 dev = [

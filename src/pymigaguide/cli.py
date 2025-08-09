@@ -13,8 +13,8 @@ except Exception:
     raise
 
 # Local imports (same folder)
-from parser import AmigaGuideParser
-from models import GuideDocument  # for typing / duck-typing of Pydantic object
+from .parser import AmigaGuideParser
+from .model import GuideDocument  # for typing / duck-typing of Pydantic object
 
 
 def detect_and_decode(data: bytes) -> tuple[str, str]:
