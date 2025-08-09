@@ -10,7 +10,7 @@ from textual.containers import Container
 from textual.message import Message
 
 from ..model import GuideDocument
-from ..markdown import MarkdownRenderer
+from ..writer.markdown import MarkdownRenderer
 from .guidetoolbar import GuideToolbar, NavTargets
 
 

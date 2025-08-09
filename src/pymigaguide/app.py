@@ -10,7 +10,7 @@ from textual.widgets import Footer, Header
 # Local package imports
 from .parser import AmigaGuideParser
 from .model import GuideDocument
-from .markdown import MarkdownRenderer  # your renderer -> Markdown text
+from .writer.markdown import MarkdownRenderer
 from .widgets.guideview import GuideView
 
 

@@ -2,7 +2,10 @@
 from __future__ import annotations
 
 import argparse
-import json
+from .writer.json import dump_json
+from .writer.markdown import MarkdownRenderer
+from .writer.html import HtmlRenderer
+from .writer.txt import TxtRenderer
 import sys
 from pathlib import Path
 
@@ -14,7 +17,6 @@ except Exception:
 
 # Local imports (same folder)
 from .parser import AmigaGuideParser
-from .model import GuideDocument  # for typing / duck-typing of Pydantic object
 
 
 def detect_and_decode(data: bytes) -> tuple[str, str]:
@@ -38,28 +40,6 @@ def detect_and_decode(data: bytes) -> tuple[str, str]:
     return text, f"{enc} (with replacements)"
 
 
-def dump_json(doc: GuideDocument) -> str:
-    """
-    Pydantic v2 uses model_dump_json; v1 uses .json().
-    Support both without caring which is installed.
-    """
-    # Try v2
-    try:
-        return doc.model_dump_json(indent=2)
-    except AttributeError:
-        pass
-    # Fall back to v1
-    try:
-        return doc.json(indent=2)
-    except AttributeError:
-        # absolute last resort: use dict + json.dumps
-        try:
-            data = doc.model_dump()
-        except AttributeError:
-            data = doc.dict()
-        return json.dumps(data, indent=2, ensure_ascii=False)
-
-
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     p = argparse.ArgumentParser(
         description="AmigaGuide CLI: detect encoding, convert to UTF-8, parse, and optionally dump JSON."
@@ -72,7 +52,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     )
     p.add_argument(
         "--format",
-        choices=["json"],
+        choices=["json", "markdown", "html", "txt"],
         default="json",
         help="Output format for --dump (default: json).",
     )
@@ -110,6 +90,25 @@ def main(argv: list[str] | None = None) -> int:
     if args.dump:
         if args.format == "json":
             print(dump_json(doc))
+        elif args.format == "markdown":
+            renderer = MarkdownRenderer()
+            rendered_nodes = renderer.render_document(doc)
+            for node_name, content in rendered_nodes.items():
+                print(f"--- NODE: {node_name} ---\n{content}")
+        elif args.format == "html":
+            renderer = HtmlRenderer()
+            rendered_nodes = renderer.render_document(doc)
+            # For HTML, we might want to output a full HTML page or just the body content
+            # For simplicity, let's just concatenate all node HTML for now
+            print("<!DOCTYPE html>\n<html>\n<head><title>Guide Document</title></head><body>")
+            for node_name, content in rendered_nodes.items():
+                print(f'<div id="{node_name}">\n{content}\n</div>')
+            print("</body>\n</html>")
+        elif args.format == "txt":
+            renderer = TxtRenderer()
+            rendered_nodes = renderer.render_document(doc)
+            for node_name, content in rendered_nodes.items():
+                print(f"--- NODE: {node_name} ---\n{content}")
         else:
             print(f"ERROR: unsupported format: {args.format}", file=sys.stderr)
             return 3
