@@ -80,6 +80,13 @@ class GuideApp(App):
         self.query_one(GuideView).forward()
 
 
-if __name__ == "__main__":
-    app = GuideApp()
+def main():
+    guide_path = None
+    if len(sys.argv) > 1:
+        guide_path = sys.argv[1]
+    app = GuideApp(guide_path=guide_path)
     app.run()
+
+
+if __name__ == "__main__":
+    main()

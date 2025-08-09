@@ -29,7 +29,8 @@ dev = [
     "ruff",
     "mkdocs",
     "mkdocs-material",
-    "pydoc-markdown"
+    "pydoc-markdown",
+    "pytest-asyncio"
 ]
 
 [build-system]

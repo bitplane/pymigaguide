@@ -3,19 +3,19 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Optional, Tuple, Dict
+from typing import Optional, Dict
 
-from textual.widget import Widget
 from textual.widgets import Markdown
 from textual.containers import Container
 from textual.message import Message
 
-from ..model import GuideDocument, GuideNode
-from ..markdown import MarkdownRenderer, MarkdownOptions
+from ..model import GuideDocument
+from ..markdown import MarkdownRenderer
 from .guidetoolbar import GuideToolbar, NavTargets
 
 
 # --- LinkTarget --------------------------------------------------------------
+
 
 @dataclass
 class LinkTarget:
@@ -54,6 +54,7 @@ def parse_href(href: str) -> LinkTarget:
 
 
 # --- GuideView ---------------------------------------------------------------
+
 
 class GuideView(Container):
     """
@@ -152,9 +153,7 @@ class GuideView(Container):
             return
         # Render only this node to markdown
         rendered = self._renderer.render_document(doc)
-        text = rendered.get(node_name, f"# {node_name}
-
-*(empty)*")
+        text = rendered.get(node_name, f"# {node_name}\n\n*(empty)*")
         mdw.update(text)
         # Update toolbar targets
         tb = self.query_one(GuideToolbar)
@@ -196,7 +195,7 @@ class GuideView(Container):
             title=node.attrs.title or node.name,
             prev=node.attrs.prev or prev_node,
             next=node.attrs.next or next_node,
-            toc=node.attrs.toc or doc.meta.index_node, # Assuming TOC maps to global index_node
+            toc=node.attrs.toc or doc.meta.index_node,  # Assuming TOC maps to global index_node
             index=node.attrs.index or doc.meta.index_node,
             help=node.attrs.help or doc.meta.help_node,
         )
@@ -229,6 +228,7 @@ class GuideView(Container):
 
         try:
             from ..parser import AmigaGuideParser  # local import to avoid cycles
+
             parser = AmigaGuideParser()
             doc = parser.parse_file(target)
         except Exception as e:

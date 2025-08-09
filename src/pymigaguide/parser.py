@@ -1,7 +1,6 @@
 from __future__ import annotations
 
-import re
-from .regex import NODE_START_RE, NODE_END_RE, CMD_LINE_RE, INLINE_RE, QUOTED_RE, FILE_NODE_SPLIT, ESCAPED_AT_RE, ESCAPED_BS_RE
+from .regex import NODE_START_RE, NODE_END_RE, CMD_LINE_RE, INLINE_RE, QUOTED_RE, FILE_NODE_SPLIT
 from pathlib import Path
 from typing import Optional, Tuple, List
 
@@ -25,10 +24,6 @@ from .model import (
     Break,
     UnknownInline,
 )
-
-
-
-
 
 
 def detect_encoding_and_read(path: Path) -> str:
@@ -428,12 +423,12 @@ class AmigaGuideParser:
     def _strip_quotes(s: str) -> str:
         s = s.strip()
         if len(s) >= 2 and s[0] == '"' and s[-1] == '"':
-            return s[1:-1].replace('\"', '"')
+            return s[1:-1].replace('"', '"')
         return s
 
     @staticmethod
     def _unescape_quotes(s: str) -> str:
-        return s.replace('\"', '"')
+        return s.replace('"', '"')
 
     @staticmethod
     def _unquote(s: str) -> str:
@@ -468,4 +463,3 @@ class AmigaGuideParser:
         # At global/node directive level we usually just want the node part or full
         # string as-is for later resolution.
         return s
- s
