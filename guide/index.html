@@ -1,0 +1,762 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.17">
+    
+    
+      
+        <title>AmigaGuide Format Reference - example-python-project</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#amigaguide-format-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="example-python-project" class="md-header__button md-logo" aria-label="example-python-project" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            example-python-project
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              AmigaGuide Format Reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/bitplane/python/example-python-project" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="example-python-project" class="md-nav__button md-logo" aria-label="example-python-project" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    example-python-project
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/bitplane/python/example-python-project" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    None
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LICENSE.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    None
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-node-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Node Structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-global-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Global Commands
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-node-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Node Commands
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-inline-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Inline Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Inline Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-links-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 Links &amp; Actions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-styles" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 Styles
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-colours" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 Colours
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-layout-breaks" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4 Layout &amp; Breaks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-escaping" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Escaping
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Encoding
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-notes-quirks" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Notes &amp; Quirks
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="amigaguide-format-reference">AmigaGuide Format Reference</h1>
+<p>This document summarises the <strong>AmigaGuide</strong> hypertext file format as implemented in our parser.
+Use it as a working reference when extending parsing, rendering, or Markdown output.</p>
+<hr />
+<h2 id="1-overview">1. Overview</h2>
+<p>An AmigaGuide file is a plain text hypertext database used on classic AmigaOS (2.1+).
+It contains:</p>
+<ul>
+<li><strong>Global commands</strong> before/between nodes.</li>
+<li><strong>One or more named nodes</strong> (<code>@NODE ...</code> / <code>@ENDNODE ...</code>) containing text.</li>
+<li><strong>Inline commands</strong> inside text, delimited by <code>@{ ... }</code>.</li>
+</ul>
+<p>The first non-empty line is normally <code>@DATABASE &lt;name&gt;</code>.</p>
+<hr />
+<h2 id="2-node-structure">2. Node Structure</h2>
+<p>A <code>.guide</code> file contains one or more <strong>nodes</strong>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>@DATABASE MyGuide
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>@NODE MAIN &quot;Welcome&quot;
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>This is the main node.
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>@ENDNODE
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>@NODE Other
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>See @{ &quot;Main page&quot; LINK &quot;MAIN&quot; }.
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>@ENDNODE
+</span></code></pre></div>
+<ul>
+<li><strong>Node name</strong>: identifier without spaces, tabs, <code>:</code> or <code>/</code>.</li>
+<li><strong>Node title</strong>: quoted string (optional if given in <code>@NODE</code> line).</li>
+</ul>
+<p>The first node (<code>MAIN</code> by convention) is shown on open.</p>
+<hr />
+<h2 id="3-global-commands">3. Global Commands</h2>
+<p>Global commands start at column 0 and appear outside any node:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Args</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@DATABASE</code></td>
+<td>name</td>
+<td>Identify the guide file.</td>
+</tr>
+<tr>
+<td><code>@$VER:</code></td>
+<td>string</td>
+<td>Version string (AmigaDOS convention).</td>
+</tr>
+<tr>
+<td><code>@(c)</code></td>
+<td>string</td>
+<td>Copyright notice.</td>
+</tr>
+<tr>
+<td><code>@AUTHOR</code></td>
+<td>name</td>
+<td>Author metadata.</td>
+</tr>
+<tr>
+<td><code>@INDEX</code></td>
+<td>node or <code>"file/node"</code></td>
+<td>Default Index button target.</td>
+</tr>
+<tr>
+<td><code>@HELP</code></td>
+<td>node or <code>"file/node"</code></td>
+<td>Default Help button target.</td>
+</tr>
+<tr>
+<td><code>@FONT</code></td>
+<td>name size</td>
+<td>Default font.</td>
+</tr>
+<tr>
+<td><code>@WORDWRAP</code></td>
+<td></td>
+<td>Enable word-wrap mode.</td>
+</tr>
+<tr>
+<td><code>@SMARTWRAP</code></td>
+<td></td>
+<td>Enable smart-wrap mode.</td>
+</tr>
+<tr>
+<td><code>@TAB</code></td>
+<td>n</td>
+<td>Tab width in spaces.</td>
+</tr>
+<tr>
+<td><code>@WIDTH</code></td>
+<td>cols</td>
+<td>Width hint.</td>
+</tr>
+<tr>
+<td><code>@HEIGHT</code></td>
+<td>rows</td>
+<td>Height hint.</td>
+</tr>
+<tr>
+<td><code>@ONOPEN</code></td>
+<td>script</td>
+<td>Run script on open.</td>
+</tr>
+<tr>
+<td><code>@ONCLOSE</code></td>
+<td>script</td>
+<td>Run script on close.</td>
+</tr>
+<tr>
+<td><code>@MACRO</code></td>
+<td>name expansion</td>
+<td>Define global macro.</td>
+</tr>
+<tr>
+<td><code>@AMIGAGUIDE</code></td>
+<td></td>
+<td>Insert “AmigaGuide®” in bold.</td>
+</tr>
+<tr>
+<td><code>@REM</code>/<code>@REMARK</code></td>
+<td>comment</td>
+<td>Comment (ignored).</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-node-commands">4. Node Commands</h2>
+<p>Node-local commands start at column 0, inside a node:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Args</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@TITLE</code></td>
+<td>string</td>
+<td>Node title.</td>
+</tr>
+<tr>
+<td><code>@TOC</code></td>
+<td>node</td>
+<td>Contents button target for this node.</td>
+</tr>
+<tr>
+<td><code>@NEXT</code></td>
+<td>node</td>
+<td>Next button target.</td>
+</tr>
+<tr>
+<td><code>@PREV</code></td>
+<td>node</td>
+<td>Previous button target.</td>
+</tr>
+<tr>
+<td><code>@INDEX</code></td>
+<td>node</td>
+<td>Index target (local override).</td>
+</tr>
+<tr>
+<td><code>@HELP</code></td>
+<td>node</td>
+<td>Help target (local override).</td>
+</tr>
+<tr>
+<td><code>@FONT</code></td>
+<td>name size</td>
+<td>Font override.</td>
+</tr>
+<tr>
+<td><code>@PROPORTIONAL</code></td>
+<td></td>
+<td>Use proportional font.</td>
+</tr>
+<tr>
+<td><code>@WORDWRAP</code></td>
+<td></td>
+<td>Word-wrap (local).</td>
+</tr>
+<tr>
+<td><code>@SMARTWRAP</code></td>
+<td></td>
+<td>Smart-wrap (local).</td>
+</tr>
+<tr>
+<td><code>@TAB</code></td>
+<td>n</td>
+<td>Tab width.</td>
+</tr>
+<tr>
+<td><code>@KEYWORDS</code></td>
+<td>words</td>
+<td>Keywords for this node.</td>
+</tr>
+<tr>
+<td><code>@ONOPEN</code></td>
+<td>script</td>
+<td>Script on node open.</td>
+</tr>
+<tr>
+<td><code>@ONCLOSE</code></td>
+<td>script</td>
+<td>Script on node close.</td>
+</tr>
+<tr>
+<td><code>@MACRO</code></td>
+<td>name expansion</td>
+<td>Local macro.</td>
+</tr>
+<tr>
+<td><code>@EMBED</code></td>
+<td>path</td>
+<td>Insert file contents here.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-inline-commands">5. Inline Commands</h2>
+<p>Inline commands appear <strong>anywhere inside text</strong> between <code>@{</code> and <code>}</code>.
+Common categories:</p>
+<h3 id="51-links-actions">5.1 Links &amp; Actions</h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>@{ &quot;Label&quot; LINK &quot;TargetNode&quot; }
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>@{ &quot;Label&quot; ALINK &quot;TargetNode&quot; }
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>@{ &quot;Label&quot; GUIDE &quot;file.guide/Node&quot; }
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>@{ &quot;Label&quot; SYSTEM &quot;command&quot; }
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>@{ &quot;Label&quot; RX &quot;script.rexx&quot; }
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>@{ &quot;Label&quot; RXS &quot;inline-rexx-command&quot; }
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>@{ &quot;Label&quot; BEEP }
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>@{ &quot;Label&quot; CLOSE }
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>@{ &quot;Label&quot; QUIT }
+</span></code></pre></div>
+<h3 id="52-styles">5.2 Styles</h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>@{B} / @{UB}      bold on/off
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>@{I} / @{UI}      italic on/off
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>@{U} / @{UU}      underline on/off
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>@{CODE}           toggle code mode (no wrapping)
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>@{PLAIN}          reset styles
+</span></code></pre></div>
+<h3 id="53-colours">5.3 Colours</h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>@{FG name}        foreground colour
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>@{BG name}        background colour
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>@{APEN n}         foreground pen index
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>@{BPEN n}         background pen index
+</span></code></pre></div>
+<h3 id="54-layout-breaks">5.4 Layout &amp; Breaks</h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>@{JLEFT} / @{JCENTER} / @{JRIGHT}    alignment
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>@{LINDENT n}                         left indent
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>@{PARI n}                            paragraph indent
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>@{PARD}                              reset paragraph formatting
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>@{TAB}                               insert tab
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>@{SETTABS n1 n2 ...}                 set custom tab stops
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>@{CLEARTABS}                         reset tab stops
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>@{LINE}                              line break
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>@{PAR}                               paragraph break
+</span></code></pre></div>
+<hr />
+<h2 id="6-escaping">6. Escaping</h2>
+<ul>
+<li><code>\@</code> → literal <code>@</code></li>
+<li><code>\\</code> → literal backslash</li>
+</ul>
+<hr />
+<h2 id="7-encoding">7. Encoding</h2>
+<ul>
+<li>Typically ASCII or ISO-8859-1 (Latin-1).</li>
+<li>May use other 8-bit Amiga charsets for localisation.</li>
+<li>No encoding metadata — detect with <code>chardet</code> or similar.</li>
+<li>Convert to UTF-8 for processing.</li>
+</ul>
+<hr />
+<h2 id="8-notes-quirks">8. Notes &amp; Quirks</h2>
+<ul>
+<li>Commands are case-insensitive.</li>
+<li>Multiple commands can be on one line if each starts with <code>@</code>.</li>
+<li><code>ALINK</code> now behaves like <code>LINK</code> in modern viewers.</li>
+<li>MultiView (AmigaOS 3.x+) supports linking to non-guide files via datatypes.</li>
+<li><code>SMARTWRAP</code> mode: single newlines treated as spaces, double newlines = paragraph.</li>
+<li>Macro expansion is not handled by this parser (stored as-is).</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand_single_toc_entry", "navigation.sections"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  </body>
+</html>
