@@ -6,3 +6,4 @@ dist
 coverage.json
 site
 *.guide
+docs/pydoc
